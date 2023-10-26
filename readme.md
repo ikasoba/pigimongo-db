@@ -103,6 +103,7 @@ if err != nil {
 ## ドキュメントには一意のIDが付けられる
 ```go
 type Hoge struct {
+  // 内部で自動的に `Id_` というキー名でxidで生成されたidが付与される
   Id_ string
   Content string
 }
