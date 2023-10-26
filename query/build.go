@@ -59,8 +59,8 @@ func (ctx *BuildContext) BuildQueryToWhere(n any) error {
 		}
 
 	case IdentLit:
-		if string(node) == "_id" {
-			ctx.Query += `_id`
+		if string(node) == "Id_" {
+			ctx.Query += `id`
 		} else {
 			ctx.Query += `data -> ?`
 			ctx.Values = append(ctx.Values, "$."+string(node))
