@@ -6,6 +6,8 @@
 
 ## データベース初期化
 ```go
+import "github.com/ikasoba/pigimongo-db/core"
+
 db, err := NewDatabase(":memory:")
 if err != nil {
 	panic(err)
