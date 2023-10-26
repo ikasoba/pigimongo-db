@@ -37,14 +37,14 @@ type Hoge struct {
 }
 
 hoge := &Hoge{}
-err := db.Find(`Content = "ふが"`)
+err := db.Find(hoge, `Content = "ふが"`)
 if err != nil {
   panic(err)
 }
 
 // プレースホルダーも使えます
 hoge = &Hoge{}
-err = db.Find(`Content = ?`, "ふが")
+err = db.Find(hoge, `Content = ?`, "ふが")
 if err != nil {
   panic(err)
 }
