@@ -15,7 +15,7 @@ func TestDatabase(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if err := db.Add(Hoge{"ぽぽやま", 100}); err != nil {
+	if err := db.Add(Hoge{"ぺっぽこ", 100}); err != nil {
 		t.Fatal(err)
 	}
 
@@ -23,7 +23,7 @@ func TestDatabase(t *testing.T) {
 
 	err = db.Find(
 		hoge,
-		`A == "ぽぽやま"`,
+		`A == "ぺっぽこ"`,
 	)
 	if err != nil {
 		t.Fatal(err)
@@ -36,7 +36,7 @@ func TestDatabase(t *testing.T) {
 	err = db.Find(
 		hoge,
 		`A == ?`,
-		"ぽぽやま",
+		"ぺっぽこ",
 	)
 	if err != nil {
 		t.Fatal(err)
@@ -48,10 +48,10 @@ func TestDatabase(t *testing.T) {
 		struct {
 			A string
 		}{
-			A: "にょむ",
+			A: "にょろん",
 		},
 		`A == ?`,
-		"ぽぽやま",
+		"ぺっぽこ",
 	)
 	if err != nil {
 		t.Fatal(err)
@@ -62,7 +62,7 @@ func TestDatabase(t *testing.T) {
 	err = db.Find(
 		hoge,
 		`A == ?`,
-		"にょむ",
+		"にょろん",
 	)
 	if err != nil {
 		t.Fatal(err)
@@ -72,7 +72,7 @@ func TestDatabase(t *testing.T) {
 
 	err = db.Remove(
 		`A == ?`,
-		"にょむ",
+		"にょろん",
 	)
 	if err != nil {
 		t.Fatal(err)
@@ -83,7 +83,7 @@ func TestDatabase(t *testing.T) {
 	err = db.Find(
 		hoge,
 		`A == ?`,
-		"にょむ",
+		"にょろん",
 	)
 	if err == nil {
 		t.Fail()
