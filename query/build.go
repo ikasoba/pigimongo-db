@@ -59,7 +59,7 @@ func (ctx *BuildContext) BuildQueryToWhere(n any) error {
 		}
 
 	case IdentLit:
-		if string(node) == "Id_" || string(node) == "id_" {
+		if string(node) == "Id_" {
 			ctx.Query += `id`
 		} else {
 			ctx.Query += `data -> ?`

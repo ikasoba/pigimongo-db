@@ -97,3 +97,26 @@ if err != nil {
 - `>`
 - `<=`
 - `>=`
+
+# テクニック
+
+## ドキュメントには一意のIDが付けられる
+```go
+type Hoge struct {
+  Id_ string
+  Content string
+}
+
+err := db.Add(Hoge{ Content: "ぴよ" })
+if err != nil {
+  panic(err)
+}
+
+hoge := &Hoge{}
+err = db.Find(hoge, `Content = "ぴよ"`)
+if err != nil {
+  panic(err)
+}
+
+log.Println(hoge.Id_) // ckt3oe822smmhr7c40eg
+```
