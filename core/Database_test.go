@@ -5,8 +5,8 @@ import (
 )
 
 type Hoge struct {
-	A string `json:"a"`
-	B int    `json:"b"`
+	A string
+	B int
 }
 
 func TestDatabase(t *testing.T) {
@@ -15,19 +15,77 @@ func TestDatabase(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if err := db.Insert(Hoge{"うんち", 100}); err != nil {
+	if err := db.Add(Hoge{"ぽぽやま", 100}); err != nil {
 		t.Fatal(err)
 	}
 
 	hoge := &Hoge{}
 
-	err = db.FindEquals(
+	err = db.Find(
 		hoge,
-		EqualPair{".a", "うんち"},
+		`A == "ぽぽやま"`,
 	)
 	if err != nil {
 		t.Fatal(err)
 	}
 
 	t.Log(hoge)
+
+	hoge = &Hoge{}
+
+	err = db.Find(
+		hoge,
+		`A == ?`,
+		"ぽぽやま",
+	)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	t.Log(hoge)
+
+	err = db.Update(
+		struct {
+			A string
+		}{
+			A: "にょむ",
+		},
+		`A == ?`,
+		"ぽぽやま",
+	)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	hoge = &Hoge{}
+
+	err = db.Find(
+		hoge,
+		`A == ?`,
+		"にょむ",
+	)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	t.Log(hoge)
+
+	err = db.Remove(
+		`A == ?`,
+		"にょむ",
+	)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	hoge = &Hoge{}
+
+	err = db.Find(
+		hoge,
+		`A == ?`,
+		"にょむ",
+	)
+	if err == nil {
+		t.Fail()
+	}
 }

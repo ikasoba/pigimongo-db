@@ -24,6 +24,17 @@ const (
 	OpGE
 )
 
+var OperatorPriority = map[OperatorType]uint{
+	OpAND: 0,
+	OpOR:  1,
+	OpEQL: 2,
+	OpNEQ: 2,
+	OpLT:  3,
+	OpGT:  3,
+	OpLE:  3,
+	OpGE:  3,
+}
+
 type BinaryOperator struct {
 	priority uint
 	op_type  OperatorType
@@ -31,3 +42,5 @@ type BinaryOperator struct {
 	left  any
 	right any
 }
+
+type PlaceholderLit struct{}
