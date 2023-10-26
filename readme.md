@@ -16,7 +16,7 @@ if err != nil {
 }
 ```
 
-`NewDatabase`の第一引数は`":memory:"`または、任意のパスが使用できます。
+`NewDatabase`の第一引数は`":memory:"`または、任意のファイル名が使用できます。
 
 ## 書き込み
 ```go
