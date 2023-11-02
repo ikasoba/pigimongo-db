@@ -44,7 +44,7 @@ if err != nil {
 
 // プレースホルダーも使えます
 hoge = &Hoge{}
-err = db.Find(hoge, `Content = ?`, "ふが")
+err = db.Find(hoge, `Content == ?`, "ふが")
 if err != nil {
   panic(err)
 }
@@ -56,13 +56,13 @@ type Hoge struct {
   Content string
 }
 
-err := db.Update(Hoge{ "ぴよ" }, `Content = "ふが"`)
+err := db.Update(Hoge{ "ぴよ" }, `Content == "ふが"`)
 if err != nil {
   panic(err)
 }
 
 // プレースホルダーも使えます
-err = db.Update(Hoge{ "ぴよ" }, `Content = ?`, "ふが")
+err = db.Update(Hoge{ "ぴよ" }, `Content == ?`, "ふが")
 if err != nil {
   panic(err)
 }
@@ -70,13 +70,13 @@ if err != nil {
 
 ## 削除
 ```go
-err := db.Remove(`Content = "ぴよ"`)
+err := db.Remove(`Content == "ぴよ"`)
 if err != nil {
   panic(err)
 }
 
 // プレースホルダーも使えます
-err = db.Remove(`Content = ?`, "ふが")
+err = db.Remove(`Content == ?`, "ふが")
 if err != nil {
   panic(err)
 }
