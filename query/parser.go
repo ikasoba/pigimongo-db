@@ -145,9 +145,6 @@ var (
 )
 
 func ParseValue(i int, src string) (int, any, error) {
-	log.Println("v s", i)
-	defer log.Println("v e", i)
-
 	if _i, v, err := parseIdent(i, src); err == nil {
 		return _i, v, nil
 	} else if _i, v, err := parseNumber(i, src); err == nil {
@@ -162,9 +159,6 @@ func ParseValue(i int, src string) (int, any, error) {
 }
 
 func ParseOperatorSymbol(i int, src string) (int, OperatorType, error) {
-	log.Println("s s", i)
-	defer log.Println("s e", i)
-
 	if _i, v, err := andOperator(i, src); err == nil {
 		return _i, v, nil
 	} else if _i, v, err := orOperator(i, src); err == nil {
@@ -209,7 +203,6 @@ func ParseOperator(_i int, src string) (int, BinaryOperator, error) {
 			break
 		}
 
-		log.Println("o l", _i)
 		i := skipWhiteSpace(_i, src)
 
 		i, op, err := ParseOperatorSymbol(i, src)
